@@ -8,7 +8,7 @@ from selenium import webdriver
 # webdriver_path = r'C:\Program Files (x86)\Google\chromedriver.exe'
 # driver = webdriver.Chrome()
 # driver.maximize_window()
-date = input("Enter Date in this Format (MM/DD/YYYY)")
+date = input("Enter Date in this Format (MM/DD/YYYY): ")
 title = []
 team_a = []
 team_b = []
@@ -50,7 +50,8 @@ for champion in num_of_champions:
             sc = scor.find_all("span",{"class":"score"})
             formatted_score = f"{sc[0].text.strip()}  –  {sc[1].text.strip()}"
             score.append(formatted_score)
-                
+for t in titles[:len(team_a)]:
+    title.append(t.text.strip())                
 
 # driver.quit()
 
