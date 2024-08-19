@@ -1,6 +1,7 @@
 import requests
 import csv
 import time
+import os
 from bs4 import BeautifulSoup
 from itertools import zip_longest
 from selenium import webdriver
@@ -8,7 +9,7 @@ from selenium import webdriver
 # webdriver_path = r'C:\Program Files (x86)\Google\chromedriver.exe'
 # driver = webdriver.Chrome()
 # driver.maximize_window()
-date = input("Enter Date in this Format (MM/DD/YYYY)")
+date = input("Enter Date in this Format (MM/DD/YYYY): ")
 title = []
 stage = []
 team_a = []
@@ -110,9 +111,10 @@ egy_league_champion(egy_league)
 # driver.quit()
 
 file_list = [title, stage, team_a, team_b, _time, score, channel]
-file_path = r"D:\Projecrs\VS Code\Python\Wep Scraping\YallaKora\YallaKora.csv"
+current_directory = os.getcwd()
+csv_file = os.path.join(current_directory, f"YallaKora.csv")
 exported =  zip_longest(*file_list)
-with open(file_path, 'w', newline='', encoding='utf-8-sig') as YallaKora:
+with open(csv_file, 'w', newline='', encoding='utf-8-sig') as YallaKora:
     wr = csv.writer(YallaKora)
     wr.writerow(["Champion", "Stage", "Team A", "Team B", "Time", "Score", "Channel"])
     wr.writerows(exported)
