@@ -1,0 +1,50 @@
+Player: 1 (X) choose Cell: 1
+Player: Computer (O) choose Cell: 6
+Player: 1 (X) choose Cell: 5
+Player: Computer (O) choose Cell: 3
+Player: 1 (X) choose Cell: 7
+Player: Computer (O) choose Cell: 4
+Player: 1 (X) choose Cell: 8
+Player: Computer (O) choose Cell: 2
+Player: 1 (X) choose Cell: 9
+Player: 1 wins
+====================
+Player: 1 (X) choose Cell: 1
+Player: Computer (O) choose Cell: 6
+Player: 1 (X) choose Cell: 5
+Player: Computer (O) choose Cell: 3
+Player: 1 (X) choose Cell: 7
+Player: Computer (O) choose Cell: 4
+Player: 1 (X) choose Cell: 8
+Player: Computer (O) choose Cell: 2
+Player: 1 (X) choose Cell: 9
+Player: m (X) choose Cell: 2
+Player: b (O) choose Cell: 5
+Player: m (X) choose Cell: 6
+Player: b (O) choose Cell: 7
+Player: m (X) choose Cell: 4
+Player: b (O) choose Cell: 3
+Player: b wins
+====================
+Player: mohamed (X) choose Cell: 5
+Player: belal (O) choose Cell: 7
+Player: mohamed (X) choose Cell: 3
+Player: belal (O) choose Cell: 1
+Player: mohamed (X) choose Cell: 4
+Player: belal (O) choose Cell: 6
+Player: mohamed (X) choose Cell: 8
+Player: belal (O) choose Cell: 2
+Player: mohamed (X) choose Cell: 9
+It's a draw!
+====================
+Player: m (X) choose Cell: 1
+Player: Computer (O) choose Cell: 9
+Player: m (X) choose Cell: 5
+Player: Computer (O) choose Cell: 6
+Player: m (X) choose Cell: 3
+Player: Computer (O) choose Cell: 7
+Player: m (X) choose Cell: 8
+Player: Computer (O) choose Cell: 4
+Player: m (X) choose Cell: 2
+Player: m wins
+====================
