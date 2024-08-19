@@ -103,11 +103,18 @@ def egy_league_champion(egy_league):
         _time.append(times.text.strip())
         formatted_score = f"{sc[0].text.strip()}  –  {sc[1].text.strip()}"
         score.append(formatted_score)
-            
-euro_champion(euro)
-copa_america_champion(copa_america)
-egy_league_champion(egy_league)
-
+try:
+    euro_champion(euro)
+except:
+    print("No Matches Found In Euro")  
+try:              
+    copa_america_champion(copa_america)
+except:
+    print("No Matches Found In Copa America")
+try:
+    egy_league_champion(egy_league)
+except:
+    print("No Matches Found In Egy League")
 # driver.quit()
 
 file_list = [title, stage, team_a, team_b, _time, score, channel]
