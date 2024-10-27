@@ -1,6 +1,9 @@
+import math
 import requests
+import json
 import csv
 import time
+import os
 from bs4 import BeautifulSoup
 from itertools import zip_longest
 from selenium import webdriver
@@ -12,9 +15,12 @@ date = input("Enter Date in this Format (MM/DD/YYYY): ")
 title = []
 team_a = []
 team_b = []
+_timee = []
+stages = []
+channels = []
 score = []
 
-url = f"https://www.yallakora.com/match-center/%d9%85%d8%b1%d9%83%d8%b2-%d8%a7%d9%84%d9%85%d8%a8%d8%a7%d8%b1%d9%8a%d8%a7%d8%aa?date={date}#"
+url = f"https://www.yallakora.com/match-center/%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D9%85%D8%A8%D8%A7%D8%B1%D9%8A%D8%A7%D8%AA?date={date}#"
 # driver.get(url)
 page = requests.get(url)
 src = page.content
@@ -29,23 +35,42 @@ for champion in num_of_champions:
         team_A = match.find_all("div",{"class":"teams teamA"})
         team_B = match.find_all("div",{"class":"teams teamB"})
         result = match.find_all("div",{"class":"MResult"})
+        _time = match.find_all("span",{"class":"time"})
+        stage =  match.find_all("div",{"class":"date"})
+        channel = match.find_all("div",{"class":"channel icon-channel"})
         for i in team_A:
             team_a.append(i.find("p").text.strip())
         for i in team_B:
             team_b.append(i.find("p").text.strip())
+        for i in _time:
+            _timee.append(i.text.strip())
+        for i in stage:
+            stages.append(i.text.strip())
+        for i in channel:
+            channels.append(i.text.strip())
         for scor in result:
             sc = scor.find_all("span",{"class":"score"})
             formatted_score = f"{sc[0].text.strip()}  –  {sc[1].text.strip()}"
             score.append(formatted_score)
+        
     # matches that played
     for match in num_of_matches_played: 
         team_A = match.find_all("div",{"class":"teams teamA"})
         team_B = match.find_all("div",{"class":"teams teamB"})
         result = match.find_all("div",{"class":"MResult"})
+        _time = match.find_all("span",{"class":"time"})
+        stage =  match.find_all("div",{"class":"date"})
+        channel = match.find_all("div",{"class":"channel icon-channel"})
         for i in team_A:
             team_a.append(i.find("p").text.strip())
         for i in team_B:
             team_b.append(i.find("p").text.strip())
+        for i in _time:
+            _timee.append(i.text.strip())
+        for i in stage:
+            stages.append(i.text.strip())
+        for i in channel:
+            channels.append(i.text.strip())
         for scor in result:
             sc = scor.find_all("span",{"class":"score"})
             formatted_score = f"{sc[0].text.strip()}  –  {sc[1].text.strip()}"
@@ -54,11 +79,29 @@ for t in titles[:len(team_a)]:
     title.append(t.text.strip())                
 
 # driver.quit()
-
-file_list = [title,team_a, team_b, score]
-file_path = r"D:\Projecrs\VS Code\Python\Wep Scraping\YallaKora\YK.csv"
+file_list = [title,stages, team_a, team_b, _timee, score]
+current_directory = os.getcwd()
+csv_file = os.path.join(current_directory, f"YallaKora.csv")
 exported =  zip_longest(*file_list)
-with open(file_path, 'w', newline='', encoding='utf-8-sig') as YK:
+with open(csv_file, 'w', newline='', encoding='utf-8-sig') as YK:
     wr = csv.writer(YK)
     wr.writerow(["title","Team A", "Team B", "Score"])
     wr.writerows(exported)
+
+# Save to JSON
+json_data = []
+for i in range(len(title)):
+    match = {
+        "Champion": title[i],
+        "stage": stages[i],
+        "Team A": team_a[i],
+        "Team B": team_b[i],
+        "Time": _timee[i],
+        "Score": score[i],
+        "channel": channels[i],
+    }
+    json_data.append(match)
+
+json_file = os.path.join(current_directory, f"YallaKora.json")
+with open(json_file, 'w', encoding='utf-8') as json_out:
+    json.dump(json_data, json_out, ensure_ascii=False, indent=4)
