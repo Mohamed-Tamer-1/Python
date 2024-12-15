@@ -1,6 +1,6 @@
 🎉 Exploring Superstore Sales Insights 🎉
 
-I’m excited to share my recent data analysis project on the Superstore dataset! 🛒💡
+I’m excited to share my End-to-end data Science project on the Superstore dataset! 🛒💡
 
 This project dives into:
 
@@ -21,8 +21,6 @@ Key Highlights:
 Using Python and libraries like Pandas, and Matplotlib, I also explored advanced metrics such as Sales Before Discount and Profit Margins by Category.
 
 Check out the attached visualizations 📈 to see trends and actionable insights!
-
-
 
 Asking questions
 - What are the top selling products in the superstore? ✅
