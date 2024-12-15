@@ -2,12 +2,10 @@
 import requests
 import csv
 import time
+import os
 from bs4 import BeautifulSoup
 from itertools import zip_longest
 from selenium import webdriver
-
-# Path to the Chrome WebDriver executable (change this path to match your setup)
-webdriver_path = r'C:\Program Files (x86)\Google\chromedriver.exe'
 
 driver = webdriver.Chrome()
 driver.maximize_window()
@@ -88,8 +86,9 @@ driver.quit()
 # 7th creat csv file and fill it with values
 file_list = [job_title, company_name, location, poste, employment_statuse, salary, skill, job_categorie, job_requirment, job_Description, links]
 exported = zip_longest(*file_list)
-file_path = r"D:\Projecrs\VS Code\Python\Wep Scraping\WUZZUF\jobs.csv"
-with open (file_path, "w", newline='', encoding='utf-8') as jobs :
+current_directory = os.getcwd()
+csv_file = os.path.join(current_directory, f"YallaKora.csv")
+with open (csv_file, "w", newline='', encoding='utf-8') as jobs :
            wr = csv.writer(jobs)
            wr.writerow(["job_title","company_name","location","posted","employment statuses","salary","skill","job_categorie","job_requirment","job_Description","link"])
            wr.writerows(exported)
