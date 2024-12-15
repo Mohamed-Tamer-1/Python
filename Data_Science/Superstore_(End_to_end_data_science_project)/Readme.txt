@@ -1,4 +1,4 @@
-#🎉 Exploring Superstore Sales Insights 🎉
+🎉 Exploring Superstore Sales Insights 🎉
 
 I’m excited to share my recent data analysis project on the Superstore dataset! 🛒💡
 
